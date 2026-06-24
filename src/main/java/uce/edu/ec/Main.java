@@ -39,16 +39,23 @@ public class Main {
             c2.setSaldo(new BigDecimal(400));
             c2.setNumeroCuenta(1234.0);
 
+            Cuenta c4 = new Cuenta();
+            c4.setNombre("Pedro Cueva");
+            c4.setSaldo(new BigDecimal(1200));
+            c4.setNumeroCuenta(12345.0);
+
+            this.cuentaService.crearCuenta(c4);
             // this.cuentaService.crearCuenta(c1);
             // this.cuentaService.crearCuenta(c2);
-
-            // 1. Definir el monto de la transferencia
+            // this.cuentaService.crearCuenta(c3);
+            
+            //-----------------------------------
+           
             BigDecimal montoATransferir = new BigDecimal("100.00");
-
-            // 2. Pasar directamente las llaves primarias de la base de datos (1 y 2)
-            this.transferenciaService.guardarTranferencia(1, 2, montoATransferir);
-
-            System.out.println("¡Transferencia realizada con éxito!");
+            this.transferenciaService.guardarTranferencia(4, 5, montoATransferir);  
+            System.out.println("Transferencia realizada con éxito!");
+             
+             
 
             return 0;
         }

@@ -1,6 +1,7 @@
 package uce.edu.ec.infrastructure.repository;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -37,13 +38,16 @@ public class TransferenciaRepositoryImpl implements TransferenciaRepository {
         destino.setSaldo(
                 destino.getSaldo().add(monto));
 
-        Transferencia transferencia = new Transferencia();
-        transferencia.setCuentaOrigen(origen);
-        transferencia.setCuentaDestino(destino);
-        transferencia.setMonto(monto);
-        transferencia.setNombre("Transferencia Regular");
-
-        em.persist(transferencia);
+        
+         Transferencia transferencia = new Transferencia();
+         transferencia.setCuentaOrigen(origen);
+         transferencia.setCuentaDestino(destino);
+         transferencia.setMonto(monto);
+         transferencia.setNombre("Transferencia Bancaria");
+         transferencia.setFecha(LocalDateTime.now());
+         em.persist(transferencia);
+         
+        
     }
 
 }

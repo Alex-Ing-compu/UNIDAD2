@@ -1,6 +1,7 @@
 package uce.edu.ec.domain.model;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,6 +27,28 @@ public class Transferencia {
     private String nombre;
     @Column(name="tran_saldo")
     private BigDecimal monto;
+    @Column(name="tran_fecha")
+    private LocalDateTime fecha;
+
+
+
+    @ManyToOne
+    @JoinColumn(name = "tran_cuenta_origen")
+    private Cuenta cuentaOrigen;
+ 
+    @ManyToOne
+    @JoinColumn(name = "tran_cuenta_destino")
+    private Cuenta cuentaDestino;
+
+    
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getNombre() {
         return nombre;
@@ -42,24 +65,6 @@ public class Transferencia {
     public void setMonto(BigDecimal monto) {
         this.monto = monto;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "tran_cuenta_origen")
-    private Cuenta cuentaOrigen;
- 
-    @ManyToOne
-    @JoinColumn(name = "tran_cuenta_destino")
-    private Cuenta cuentaDestino;
-
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     
     public Cuenta getCuentaOrigen() {
         return cuentaOrigen;
@@ -77,19 +82,21 @@ public class Transferencia {
         this.cuentaDestino = cuentaDestino;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Transferencia{");
-        sb.append("id=").append(id);
-        sb.append(", nombre=").append(nombre);
-        sb.append(", monto=").append(monto);
-        sb.append(", cuentaOrigen=").append(cuentaOrigen);
-        sb.append(", cuentaDestino=").append(cuentaDestino);
-        sb.append('}');
-        return sb.toString();
+    public LocalDateTime getFecha() {
+        return fecha;
     }
 
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
+    }
 
+    @Override
+    public String toString() {
+        return "Transferencia [id=" + id + ", nombre=" + nombre + ", monto=" + monto + ", fecha=" + fecha + "]";
+    }
+
+   
+
+    
 
 }

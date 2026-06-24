@@ -27,7 +27,13 @@ public class Cuenta {
     @Column(name="cuen_saldo")
     private BigDecimal saldo;
 
+    
+    //@OneToMany(mappedBy = "cuentaOrigen")
+     //private List<Transferencia> transferenciasEnviadas;
 
+    //@OneToMany(mappedBy = "cuentaDestino")
+    //private List<Transferencia> transferenciasRecibidas;
+        
 
     public String getNombre() {
         return nombre;
@@ -61,7 +67,37 @@ public class Cuenta {
         this.id = id;
     }
 
-    
+    /*
+    public List<Transferencia> getTransferenciasEnviadas() {
+        return transferenciasEnviadas;
+    }
+
+    public void setTransferenciasEnviadas(List<Transferencia> transferenciasEnviadas) {
+        this.transferenciasEnviadas = transferenciasEnviadas;
+    }
+
+    public List<Transferencia> getTransferenciasRecibidas() {
+        return transferenciasRecibidas;
+    }
+
+    public void setTransferenciasRecibidas(List<Transferencia> transferenciasRecibidas) {
+        this.transferenciasRecibidas = transferenciasRecibidas;
+    }
+        */
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Cuenta{");
+        sb.append("id=").append(id);
+        sb.append(", nombre=").append(nombre);
+        sb.append(", numeroCuenta=").append(numeroCuenta);
+        sb.append(", saldo=").append(saldo);
+        sb.append('}');
+        return sb.toString();
+    }
+
+
 
 
 }
